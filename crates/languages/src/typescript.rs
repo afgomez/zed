@@ -253,7 +253,7 @@ impl ContextProvider for TypeScriptContextProvider {
                 TYPESCRIPT_MOCHA_TASK_VARIABLE.template_value(),
                 "--grep".to_owned(),
                 format!("\"{}\"", VariableName::Symbol.template_value()),
-                VariableName::File.template_value(),
+                VariableName::RelativeFile.template_value(),
             ],
             tags: vec![
                 "ts-test".to_owned(),
@@ -293,6 +293,7 @@ impl ContextProvider for TypeScriptContextProvider {
                 "js-test".to_owned(),
                 "tsx-test".to_owned(),
             ],
+            cwd: Some(VariableName::WorktreeRoot.template_value()),
             ..TaskTemplate::default()
         });
 
